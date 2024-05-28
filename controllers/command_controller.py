@@ -8,7 +8,10 @@ class CommandController:
         self.nlu_processor = NLUProcessor(model_name)
 
     def handle_command(self, intent, entities):
-        filename = entities.get('FILE_NAME', '')
+        filename = entities.get('FILE_NAME', None)
+        if not filename:  # Check if filename is extracted properly
+            print("No filename provided. Please specify a file name.")
+            return
 
         if intent == 'create_file':
             self.create_file(filename)

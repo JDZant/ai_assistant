@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2760e4cb-97fc-45b9-9dc5-378641295aca" name="Changes" comment="-Adjusted training script&#10;-Managed to store an entitiy in the spacy model">
+    <list default="true" id="2760e4cb-97fc-45b9-9dc5-378641295aca" name="Changes" comment="Working model!">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/query_processing/nlu_processor.py" beforeDir="false" afterPath="$PROJECT_DIR$/query_processing/nlu_processor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/test_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/test_model.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -212,7 +209,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716931468675</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Working model!">
+      <option name="closed" value="true" />
+      <created>1716932483945</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1716932483945</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -223,6 +228,7 @@
     <MESSAGE value="It runs again!" />
     <MESSAGE value="-Added training scripts. &#10;-Application runs but empty categories &amp; Entities for Spacy NLU model" />
     <MESSAGE value="-Adjusted training script&#10;-Managed to store an entitiy in the spacy model" />
-    <option name="LAST_COMMIT_MESSAGE" value="-Adjusted training script&#10;-Managed to store an entitiy in the spacy model" />
+    <MESSAGE value="Working model!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Working model!" />
   </component>
 </project>
