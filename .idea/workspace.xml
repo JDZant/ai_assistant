@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2760e4cb-97fc-45b9-9dc5-378641295aca" name="Changes" comment="It runs again!">
-      <change afterPath="$PROJECT_DIR$/utils/test_model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/verify_offsets.py" afterDir="false" />
+    <list default="true" id="2760e4cb-97fc-45b9-9dc5-378641295aca" name="Changes" comment="-Added training scripts. &#10;-Application runs but empty categories &amp; Entities for Spacy NLU model">
+      <change afterPath="$PROJECT_DIR$/utils/training_data.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/query_processing/nlu_processor.py" beforeDir="false" afterPath="$PROJECT_DIR$/query_processing/nlu_processor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/en_core_web_sm/textcat_multilabel/model" beforeDir="false" afterPath="$PROJECT_DIR$/utils/en_core_web_sm/textcat_multilabel/model" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/en_core_web_sm/vocab/strings.json" beforeDir="false" afterPath="$PROJECT_DIR$/utils/en_core_web_sm/vocab/strings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/test_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/test_model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/train_nlu.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/train_nlu.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -198,7 +198,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716922401930</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="-Added training scripts. &#10;-Application runs but empty categories &amp; Entities for Spacy NLU model">
+      <option name="closed" value="true" />
+      <created>1716926998943</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1716926998943</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -207,6 +215,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Renaming of directories&#10;Structure changes&#10;Mistral and ollama implemented (work in progress)" />
     <MESSAGE value="It runs again!" />
-    <option name="LAST_COMMIT_MESSAGE" value="It runs again!" />
+    <MESSAGE value="-Added training scripts. &#10;-Application runs but empty categories &amp; Entities for Spacy NLU model" />
+    <option name="LAST_COMMIT_MESSAGE" value="-Added training scripts. &#10;-Application runs but empty categories &amp; Entities for Spacy NLU model" />
   </component>
 </project>

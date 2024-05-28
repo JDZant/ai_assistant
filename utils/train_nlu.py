@@ -1,56 +1,14 @@
+import random
+
 import spacy
 from spacy.training import Example
 from pathlib import Path
-
-def load_data():
-    return [
-        ("Create a file named birthday.txt", {
-            "cats": {"create_file": 1.0},
-            "entities": [
-                (20, 32, "FILE_NAME")
-            ]
-        }),
-        ("Delete the file example.txt", {
-            "cats": {"delete_file": 1.0},
-            "entities": [
-                (16, 27, "FILE_NAME")
-            ]
-        }),
-        ("Read the file holiday.txt", {
-            "cats": {"read_file": 1.0},
-            "entities": [
-                (14, 25, "FILE_NAME")
-            ]
-        }),
-        ("Read the file wedding.txt", {
-            "cats": {"read_file": 1.0},
-            "entities": [
-                (14, 25, "FILE_NAME")
-            ]
-        }),
-        ("Create a document named report.txt", {
-            "cats": {"create_file": 1.0},
-            "entities": [
-                (24, 34, "FILE_NAME")
-            ]
-        }),
-        ("Remove the file report.txt", {
-            "cats": {"delete_file": 1.0},
-            "entities": [
-                (16, 26, "FILE_NAME")
-            ]
-        }),
-        ("Open the file notes.txt", {
-            "cats": {"read_file": 1.0},
-            "entities": [
-                (14, 23, "FILE_NAME")
-            ]
-        }),
-    ]
+from training_data import load_data
 
 def train_nlu_model(data):
     nlp = spacy.blank('en')
 
+    # Add text categorization pipeline component
     if "textcat_multilabel" not in nlp.pipe_names:
         textcat = nlp.add_pipe('textcat_multilabel', last=True)
     else:
@@ -60,21 +18,32 @@ def train_nlu_model(data):
     textcat.add_label("delete_file")
     textcat.add_label("read_file")
 
-    optimizer = nlp.begin_training()
-    for i in range(10):  # Number of iterations
+    # Add entity recognizer to the pipeline, if needed
+    if "ner" not in nlp.pipe_names:
+        ner = nlp.add_pipe('ner', last=True)
+    else:
+        ner = nlp.get_pipe('ner')
+
+    # Add new entity type to entity recognizer
+    ner.add_label("FILE_NAME")
+
+    # Begin training
+    nlp.begin_training()
+    for i in range(100):  # Increase iterations for more robust training
+        random.shuffle(data)  # Randomize data at each iteration
         losses = {}
         for text, annotations in data:
             doc = nlp.make_doc(text)
-            example = Example.from_dict(doc, {"cats": annotations["cats"], "entities": annotations["entities"]})
-            print(f"Training with example: {doc.text}, {annotations['cats']}, {annotations['entities']}")
-            nlp.update([example], sgd=optimizer, losses=losses)
+            example = Example.from_dict(doc, annotations)
+            nlp.update([example], sgd=nlp.create_optimizer(), losses=losses)
         print(f"Iteration {i} - Losses: {losses}")
 
+    # Save the trained model
     model_dir = Path("en_core_web_sm")
     if not model_dir.exists():
         model_dir.mkdir()
     nlp.to_disk(model_dir)
 
 if __name__ == "__main__":
-    training_data = load_data()
-    train_nlu_model(training_data)
+    data = load_data()
+    train_nlu_model(data)

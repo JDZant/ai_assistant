@@ -9,7 +9,19 @@ def test_model():
         "Read the file wedding.txt",
         "Create a document named report.txt",
         "Remove the file report.txt",
-        "Open the file notes.txt"
+        "Open the file notes.txt",
+        "Create a report named summary.doc",
+        "Erase the document final_report.pdf",
+        "Show me the document meeting_notes.docx",
+        "Generate a new file called notes.txt",
+        "Remove document final_summary.pdf",
+        "Read the text file meeting_summary.doc",
+        "Create new notes document named notes.txt",
+        "Delete this file called old_notes.txt",
+        "Open this document final_meeting.docx",
+        "Make a file named holiday_plans.txt",
+        "Erase the notes in old_report.txt",
+        "Show the file named annual_summary.doc"
     ]
     for text in texts:
         doc = nlp(text)

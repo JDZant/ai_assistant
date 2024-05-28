@@ -21,13 +21,18 @@
       "create_file",
       "delete_file",
       "read_file"
+    ],
+    "ner":[
+      "FILE_NAME"
     ]
   },
   "pipeline":[
-    "textcat_multilabel"
+    "textcat_multilabel",
+    "ner"
   ],
   "components":[
-    "textcat_multilabel"
+    "textcat_multilabel",
+    "ner"
   ],
   "disabled":[
 
