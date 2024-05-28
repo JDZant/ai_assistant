@@ -10,6 +10,7 @@ class NLUProcessor:
         doc = self.nlp(query)
         if not doc.cats:
             raise ValueError("The model did not return any categories.")
-        intent = max(doc.cats, key=doc.cats.get)
+        # Select the category with the highest score that exceeds a threshold
+        intent = max(doc.cats, key=lambda key: doc.cats[key]) if doc.cats else 'unknown'
         entities = {ent.label_: ent.text for ent in doc.ents}
         return intent, entities

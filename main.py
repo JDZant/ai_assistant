@@ -8,19 +8,28 @@ load_dotenv()
 
 
 def main():
-    model_dir = "en_core_web_sm"
+    model_dir = "utils/en_core_web_sm"  # Ensure this is the correct path to your model directory
 
     nlu_processor = NLUProcessor(model_dir)
-    command_controller = CommandController(os.getenv('DIR_PATH'))
+    dir_path = os.getenv('DIR_PATH')
+    if not dir_path:
+        raise EnvironmentError(
+            "Environment variable 'DIR_PATH' is not set. Please set this variable in your .env file.")
 
-    print(f"Working directory: {os.getenv('DIR_PATH')}")
+    print(f"Working directory: {dir_path}")
 
-    user_input = input("Please enter your command: ")
-    try:
-        intent, entities = nlu_processor.process_query(user_input)
-        command_controller.handle_command(intent, entities)
-    except ValueError as e:
-        print(f"Error processing query: {e}")
+    while True:  # This loop will keep the program running, asking for new commands
+        user_input = input("Please enter your command or type 'exit' to quit: ")
+        if user_input.lower() == 'exit':
+            print("Exiting the application.")
+            break
+
+        try:
+            intent, entities = nlu_processor.process_query(user_input)
+            command_controller = CommandController(dir_path)
+            command_controller.handle_command(intent, entities)
+        except ValueError as e:
+            print(f"Error processing query: {e}")
 
 
 if __name__ == "__main__":

@@ -1,7 +1,8 @@
 import spacy
 
+
 def test_model():
-    nlp = spacy.load("en_core_web_sm")
+    nlp = spacy.load("./en_core_web_sm")
     texts = [
         "Create a file named birthday.txt",
         "Delete the file example.txt",
@@ -30,5 +31,15 @@ def test_model():
         print(f"Entities: {[(ent.text, ent.label_) for ent in doc.ents]}")
         print()
 
+
+def test_create_file():
+    nlp = spacy.load("./en_core_web_sm")  # Make sure to provide the correct path
+    text = "Create a file named holiday_plans.txt"
+    doc = nlp(text)
+    print("Categories:", doc.cats)
+    print("Entities:", [(ent.text, ent.label_) for ent in doc.ents])
+
+
 if __name__ == "__main__":
-    test_model()
+    # test_model()
+    test_create_file()
