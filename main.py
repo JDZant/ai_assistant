@@ -1,16 +1,24 @@
-from query_processing.ai_interaction import query_mistral
+import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file (if applicable)
+load_dotenv()
+
+from query_processing.nlu_processor import NLUProcessor
 from controllers.command_controller import CommandController
 
 
 def main():
-    controller = CommandController()
-    user_input = input("Please enter your command: ")
-    mistral_response = query_mistral(user_input)
+    model_name = "en_core_web_sm"
 
-    if mistral_response:
-        controller.process_command(mistral_response)
-    else:
-        print("Failed to get a valid response from Mistral.")
+    nlu_processor = NLUProcessor(model_name)
+    command_controller = CommandController(os.getenv('DIR_PATH'))
+
+    print(f"Working directory: {os.getenv('DIR_PATH')}")
+
+    user_input = input("Please enter your command: ")
+    intent, entities = nlu_processor.process_query(user_input)
+    command_controller.handle_command(intent, entities)
 
 
 if __name__ == "__main__":
