@@ -1,0 +1,8 @@
+{
+  "labels":[
+    "create_file",
+    "delete_file",
+    "read_file"
+  ],
+  "threshold":0.5
+}
