@@ -1,13 +1,15 @@
 import os
 from query_processing.nlu_processor import NLUProcessor
 
+
 class CommandController:
     def __init__(self, dir_path):
         self.dir_path = dir_path
-        model_name = "en_core_web_sm"
+        model_name = "en_core_web_lg"
         self.nlu_processor = NLUProcessor(model_name)
 
     def handle_command(self, intent, entities):
+        print(f"Intent: {intent}, Entities: {entities}")
         filename = entities.get('FILE_NAME', None)
         if not filename:  # Check if filename is extracted properly
             print("No filename provided. Please specify a file name.")

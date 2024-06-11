@@ -5,6 +5,7 @@ from spacy.training import Example
 from pathlib import Path
 from training_data import load_data
 
+
 def train_nlu_model(data):
     nlp = spacy.blank('en')
 
@@ -29,7 +30,7 @@ def train_nlu_model(data):
 
     # Begin training
     nlp.begin_training()
-    for i in range(100):  # Increase iterations for more robust training
+    for i in range(200):  # Increase iterations for more robust training
         random.shuffle(data)  # Randomize data at each iteration
         losses = {}
         for text, annotations in data:
@@ -43,6 +44,7 @@ def train_nlu_model(data):
     if not model_dir.exists():
         model_dir.mkdir()
     nlp.to_disk(model_dir)
+
 
 if __name__ == "__main__":
     data = load_data()

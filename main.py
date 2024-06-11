@@ -8,7 +8,7 @@ load_dotenv()
 
 
 def main():
-    model_dir = "utils/en_core_web_sm"  # Ensure this is the correct path to your model directory
+    model_dir = "utils/en_core_web_sm"
 
     nlu_processor = NLUProcessor(model_dir)
     dir_path = os.getenv('DIR_PATH')

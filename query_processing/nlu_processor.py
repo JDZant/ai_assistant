@@ -8,6 +8,7 @@ class NLUProcessor:
 
     def process_query(self, query):
         doc = self.nlp(query)
+        print(doc)
         if not doc.cats:
             raise ValueError("The model did not return any categories.")
         # Select the category with the highest score that exceeds a threshold
